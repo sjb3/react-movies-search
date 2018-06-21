@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import MovieRow from './MovieRow';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 import $ from 'jquery';
@@ -8,21 +7,8 @@ import MovieRow from './MovieRow';
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {};
-    // const movies = [
-    //   {id: '1', img_path:'http://www.maviescene.net/wp-content/uploads/2014/04/Tommaso-De-Benedictis-Gucci-Watches-Jewelry-2014.jpg', title: 'Buck Hayes', overview: 'COLT studio'},
-    //   {id: '2', img_path:"../images/BUCK_HAYES.jpg", title: 'Colton Ford', overview: 'AW1'},
-    //   {id: '3', img_path:'../images/JAKE_TANNER.jpg', title: 'Jake tanner', overview: 'COLT studio'},
-    // ]
-
-    // const movieRows = []
-
-    // movies.forEach((movie) => {
-    //   const movieRow = <MovieRow key={movie.id} movie={movie}/>
-
-    //   movieRows.push(movieRow)
-    // })
-    // this.state = {rows: movieRows}
     this.performSearch()
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
   }
@@ -53,8 +39,8 @@ class App extends Component {
   }
 
   searchChangeHandler(e) {
-    e.preventDefault()
-    console.log(e.target.value)
+    // e.preventDefault()
+    // console.log(e.target.value)
     const searchTerm = e.target.value;
     this.performSearch(searchTerm)
   }
