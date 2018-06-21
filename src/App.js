@@ -3,6 +3,8 @@ import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
 import $ from 'jquery';
 import MovieRow from './MovieRow';
+import NavBar from './components/NavBar';
+import TextField from '@material-ui/core/TextField';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class App extends Component {
     this.searchChangeHandler = this.searchChangeHandler.bind(this)
   }
 
-  performSearch(searchTerm) {
+  performSearch = (searchTerm) => {
     // console.log('>>>>>>>> Perform search', searchResults)
     const urlString = `https://api.themoviedb.org/3/search/movie?api_key=abf873cdb39470df5ade84f10bc046ec&query=${searchTerm}`
 
@@ -38,9 +40,7 @@ class App extends Component {
     })
   }
 
-  searchChangeHandler(e) {
-    // e.preventDefault()
-    // console.log(e.target.value)
+  searchChangeHandler = (e) => {
     const searchTerm = e.target.value;
     this.performSearch(searchTerm)
   }
@@ -50,20 +50,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <table className='titleBar'>
-          <tbody>
-            <tr>
-              <td>
-                <i style={{color: '#f7bbe8', fontSize: '2em'}} className="fa fa-compass"></i>
-              </td>
-              <td width='16' />
-              <td>
-                <h1>Movies DB search</h1>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <input onChange={this.searchChangeHandler} style={{paddingLeft: 16, paddingTop: 8, paddingBottom: 8, fontSize: 20, display: 'block'}} placeholder='search ...' />
+          <NavBar />
+          <form>
+            <TextField
+            style={{fontStyle:'italic'}}
+            placeholder='Search Movie ...'
+            onChange={this.searchChangeHandler}
+            margin="normal"
+          />
+          </form>
         {rows}
       </div>
     );
